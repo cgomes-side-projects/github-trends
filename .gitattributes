@@ -1,0 +1,11 @@
+*           text eol=lf
+
+# dotfiles configurations
+.*          text eol=lf
+
+# Graphics
+*.png       binary
+*.jpg       binary
+*.svg       binary
+*.gif       binary
+*.ico       binary
