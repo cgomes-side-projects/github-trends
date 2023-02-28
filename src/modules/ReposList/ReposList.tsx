@@ -20,7 +20,7 @@ export default function ReposList({ className, repos }: ReposListProps) {
               </a>
             </h3>
             <div>
-              <FavoriteButton />
+              <FavoriteButton repoId={repo.id} />
             </div>
           </header>
           <p className={styles.description}>{repo.description}</p>
