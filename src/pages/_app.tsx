@@ -1,7 +1,17 @@
-import '@/styles/globals.scss';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from '../modules/Template/Header';
+
+import '@/styles/globals.scss';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className="app">
         <Header />
         <main className="app-main">
-          <Component {...pageProps} />
+          <QueryClientProvider client={queryClient}>
+            <Component {...pageProps} />
+          </QueryClientProvider>
         </main>
       </div>
     </>

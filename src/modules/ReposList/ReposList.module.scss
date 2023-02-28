@@ -1,0 +1,44 @@
+.list {
+  --border-color: #d0d7de;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: white;
+
+  margin-top: 2rem;
+}
+
+.item {
+  color: var(--color-text-muted);
+  padding: 1.3rem 2rem;
+
+  & + & {
+    border-top: 1px solid var(--border-color);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+
+  a {
+    color: royalblue;
+    font-weight: normal;
+    font-size: 1.6rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.stats {
+  margin-top: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}

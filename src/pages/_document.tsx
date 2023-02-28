@@ -5,7 +5,11 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/images/github-logo-black.svg" />
+        <link
+          rel="alternate icon"
+          type="image/png"
+          href="https://github.githubassets.com/favicons/favicon.png"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com/" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
         <link

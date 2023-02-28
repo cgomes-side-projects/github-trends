@@ -5,7 +5,9 @@ export default function Header() {
   return (
     <header className={styles.header} role="banner">
       <div className={`${styles.container} container`}>
-        <div className={styles.logo}>GH Trends</div>
+        <div className={styles.logo}>
+          <Link href="/">GH Trends</Link>
+        </div>
 
         <nav className={styles.nav} role="navigation">
           <span>

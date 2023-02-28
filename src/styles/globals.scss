@@ -1,3 +1,8 @@
+:root {
+  --color-text-default: #24292f;
+  --color-text-muted: #57606a;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -20,7 +25,8 @@ a {
 }
 
 .app-main {
-  padding-top: 1rem;
+  padding: 1rem 0 2rem;
+  color: var(--color-text-default);
 }
 
 .container {
