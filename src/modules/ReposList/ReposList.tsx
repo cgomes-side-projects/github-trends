@@ -1,4 +1,5 @@
 import { TrendRepo } from '../github-client';
+import FavoriteButton from './FavoriteButton';
 import styles from './ReposList.module.scss';
 
 type ReposListProps = {
@@ -13,8 +14,14 @@ export default function ReposList({ className, repos }: ReposListProps) {
         <li key={repo.id} className={styles.item}>
           <header className={styles.header}>
             <h3>
-              📘 <a href={repo.html_url}>{repo.full_name}</a>
+              📘{' '}
+              <a href={repo.html_url} target="_blank">
+                {repo.owner?.login} / {repo.name}
+              </a>
             </h3>
+            <div>
+              <FavoriteButton />
+            </div>
           </header>
           <p className={styles.description}>{repo.description}</p>
           <div className={styles.stats}>

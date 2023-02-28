@@ -1,0 +1,25 @@
+.root {
+  padding: 0.5rem 1rem;
+  background-color: #f6f8fa;
+  border: 1px solid rgba(27,31,36,0.15);
+  border-radius: .4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &:active {
+    background-color: hsla(220,14%,93%,1);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+
+  label {
+    font-weight: 500;
+  }
+}
