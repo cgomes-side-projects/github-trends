@@ -5,7 +5,7 @@ import { getClient } from './get-client';
 /** How many days old we want to search for repositories */
 const DAYS_OLD = 7;
 
-const client = getClient();
+let client: ReturnType<typeof getClient>;
 
 /**
  * Fetch the repos created within the last 7 days ordered by Stars count
@@ -16,6 +16,7 @@ export async function fetchTrendingRepos() {
   const sevenDaysAgo = dateToISO8601(startDate);
   const dateFilter = `created:${sevenDaysAgo}`;
 
+  client ??= getClient();
   const res = await client.search.repos({
     q: dateFilter,
     sort: 'stars',
