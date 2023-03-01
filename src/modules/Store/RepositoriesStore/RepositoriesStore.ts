@@ -12,10 +12,17 @@ export const useRepositoriesStore = create<RepositoriesStoreValue>((set, get) =>
     set({ repositories });
   },
   setFetchedRepositories(fetchedRepositories) {
+    const langSet = new Set<string>();
+    fetchedRepositories.forEach(({ language }) => {
+      if (language) {
+        langSet.add(language);
+      }
+    });
+
     set({
       fetchedRepositories,
       repositories: fetchedRepositories,
-      languages: fetchedRepositories.map((repo) => repo.language),
+      languages: Array.from(langSet),
     });
   },
 }));
