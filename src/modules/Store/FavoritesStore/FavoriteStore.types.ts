@@ -17,6 +17,8 @@ export type Repository = {
   starsCount: number;
   /** The number of Forks this repository has */
   forksCount: number;
+  /** The most used language in this repository */
+  language: string;
 };
 
 export type StoredRepos = Record<number, Repository>;
