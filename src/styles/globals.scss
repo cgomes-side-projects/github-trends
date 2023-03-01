@@ -1,6 +1,8 @@
 :root {
   --color-text-default: #24292f;
   --color-text-muted: #57606a;
+  --color-bg-muted: #f6f8fa;
+  --border-color: #d0d7de;
 }
 
 * {
@@ -16,7 +18,7 @@ body {
   min-height: 100svh;
   font-family: Roboto, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
-  background-color: #f6f8fa;
+  background-color: var(--color-bg-muted);
 }
 
 a {
@@ -31,9 +33,9 @@ a {
 
 .container {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 960px;
 
-  @media(max-width: 999px) {
+  @media (max-width: 999px) {
     padding: 0.5rem;
   }
 }

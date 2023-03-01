@@ -1,6 +1,9 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { useTrendingRepos } from '../modules/github-client';
+import Filters from '../modules/ReposList/Filters';
 import ReposList from '../modules/ReposList/ReposList';
+import { useRepositoriesStore } from '../modules/Store/RepositoriesStore';
 
 export default function Home() {
   return (
@@ -19,11 +22,23 @@ export default function Home() {
 }
 
 function ListWithState() {
-  const { isLoading, error, data = [] } = useTrendingRepos();
+  const { isLoading, error, data = [], isFetched } = useTrendingRepos();
+  const setFetchedRepositories = useRepositoriesStore((s) => s.setFetchedRepositories);
+  const repositories = useRepositoriesStore((s) => s.repositories);
 
-  if (error || isLoading) {
+  useEffect(() => {
+    if (isFetched && !error) {
+      setFetchedRepositories(data);
+    }
+  }, [isFetched, data, setFetchedRepositories, error]);
+
+  if (error || isLoading || !isFetched) {
     return null;
   }
 
-  return <ReposList repos={data} />;
+  return (
+    <ReposList repos={repositories}>
+      <Filters />
+    </ReposList>
+  );
 }

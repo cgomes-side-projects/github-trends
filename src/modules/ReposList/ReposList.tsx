@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { Repository } from '../Store/FavoritesStore/FavoriteStore.types';
 import FavoriteButton from './FavoriteButton';
 import styles from './ReposList.module.scss';
@@ -5,11 +6,17 @@ import styles from './ReposList.module.scss';
 type ReposListProps = {
   className?: string;
   repos: Repository[];
+  children?: ReactNode;
 };
 
-export default function ReposList({ className, repos }: ReposListProps) {
+export default function ReposList({ className, repos, children }: ReposListProps) {
   return (
     <ul className={`${className} ${styles.list}`}>
+      {children && (
+        <>
+          <li>{children}</li>
+        </>
+      )}
       {repos.map((repo) => (
         <li key={repo.id} className={styles.item}>
           <header className={styles.header}>

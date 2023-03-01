@@ -16,5 +16,6 @@ export function fromGithubToLocalRepository(ghRepo: GithubRepository): Repositor
     url: ghRepo.html_url,
     starsCount: ghRepo.stargazers_count,
     forksCount: ghRepo.forks_count,
+    language: ghRepo.language ?? '',
   };
 }
