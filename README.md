@@ -5,6 +5,20 @@ Using GitHub public API to list the most recent created repositories ordered by 
 **Live version**:  
 https://cgomes-side-projects.github.io/github-trends/
 
+**Screenshots 📸**
+
+Desktop:
+
+| Trends                               | Favorites                                  |
+| ------------------------------------ | ------------------------------------------ |
+| ![Trends](.github/images/trends.png) | ![Favorites](.github/images/favorites.png) |
+
+Mobile:
+
+| Trends                                      | Favorites                                         |
+| ------------------------------------------- | ------------------------------------------------- |
+| ![Trends](.github/images/trends-mobile.png) | ![Favorites](.github/images/favorites-mobile.png) |
+
 ## Running locally:
 
 Requirements:
