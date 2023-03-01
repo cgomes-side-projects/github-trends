@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "tsc --noEmit && next lint",
     "test": "cross-env NODE_ENV=test jest --color --watch",
     "test:ci": "cross-env NODE_ENV=test jest --ci"
   },

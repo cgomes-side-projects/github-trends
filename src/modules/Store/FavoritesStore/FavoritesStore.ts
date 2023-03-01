@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist, StateStorage } from 'zustand/middleware';
 import { addRepo, removeRepo } from './FavoritesStoreActions';
+import type { FavoriteStoreValue } from './FavoriteStore.types';
 
 /**
  * Wrapper for SSR, as localStorage isn't available at NextJS build time.
@@ -22,24 +23,21 @@ function getStorageImplementation(): StateStorage {
  */
 export const STORAGE_KEY = 'FavoriteStore';
 
-export type FavoriteStoreValue = {
-  storedIds: number[];
-  addRepo(id: number): void;
-  removeRepo(id: number): void;
-};
-
 const favoriteStoreFactoryPersisted = persist<FavoriteStoreValue>(
   (set, get): FavoriteStoreValue => ({
-    storedIds: [],
-    addRepo(id) {
+    storedRepos: {},
+    addRepo(repo) {
       set({
-        storedIds: addRepo(id, get().storedIds),
+        storedRepos: addRepo(repo, get().storedRepos),
       });
     },
-    removeRepo(id) {
+    removeRepo(repoId) {
       set({
-        storedIds: removeRepo(id, get().storedIds),
+        storedRepos: removeRepo(repoId, get().storedRepos),
       });
+    },
+    isStared(repoId) {
+      return repoId in get().storedRepos;
     },
   }),
   {

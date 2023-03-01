@@ -1,13 +1,15 @@
 export function getClient() {
-  const repos = jest.fn().mockImplementation(async () => {
+  (getClient as any).reposMock = jest.fn().mockImplementation(async () => {
     return {
-      data: repos,
+      data: {
+        items: [{}],
+      },
     };
   });
 
   return {
     search: {
-      repos,
+      repos: (getClient as any).reposMock,
     },
   };
 }

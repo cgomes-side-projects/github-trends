@@ -1,22 +1,52 @@
 import { addRepo, removeRepo } from './FavoritesStoreActions';
+import type { Repository, StoredRepos } from './FavoriteStore.types';
+
+const repo1 = {
+  id: 1,
+  name: 'repo1',
+} as Repository;
+
+const repo2 = {
+  id: 2,
+  name: 'repo2',
+} as Repository;
 
 test('should add a repo to the store', () => {
-  const initialState: number[] = [];
-  const newState = addRepo(1, initialState);
+  const initialState: StoredRepos = {};
+  const newState = addRepo(repo1, initialState);
 
-  expect(initialState).toHaveLength(0);
-  expect(newState).toHaveLength(1);
+  expect(initialState).toEqual({});
+  expect(newState).toEqual({
+    [repo1.id]: repo1,
+  });
 });
 
 test('should not add the same repo twice', () => {
-  const initialState: number[] = [1, 2];
-  const newState = addRepo(1, initialState);
+  const initialState: StoredRepos = {
+    [repo1.id]: repo1,
+    [repo2.id]: repo2,
+  };
 
-  expect(initialState).toEqual([1, 2]);
-  expect(newState).toEqual([2, 1]);
+  const newState = addRepo(repo1, initialState);
+
+  expect(initialState).toEqual({
+    [repo1.id]: repo1,
+    [repo2.id]: repo2,
+  });
+  expect(newState).toEqual({
+    [repo1.id]: repo1,
+    [repo2.id]: repo2,
+  });
 });
 
 test('should remove repos from the store without errors', () => {
-  expect(removeRepo(1, [])).toEqual([]);
-  expect(removeRepo(2, [1, 2, 3])).toEqual([1, 3]);
+  expect(removeRepo(repo1.id, {})).toEqual({});
+  expect(
+    removeRepo(repo2.id, {
+      [repo1.id]: repo1,
+      [repo2.id]: repo2,
+    }),
+  ).toEqual({
+    [repo1.id]: repo1,
+  });
 });

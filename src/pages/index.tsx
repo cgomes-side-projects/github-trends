@@ -19,11 +19,11 @@ export default function Home() {
 }
 
 function ListWithState() {
-  const { isLoading, error, data } = useTrendingRepos();
+  const { isLoading, error, data = [] } = useTrendingRepos();
 
   if (error || isLoading) {
     return null;
   }
 
-  return <ReposList repos={data?.items!} />;
+  return <ReposList repos={data} />;
 }
